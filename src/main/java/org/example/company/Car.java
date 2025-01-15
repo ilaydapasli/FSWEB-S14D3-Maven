@@ -1,5 +1,7 @@
 package org.example.company;
 
+import java.util.Objects;
+
 public class Car {
     private  boolean  engine;
     private int cylinders;
@@ -38,18 +40,20 @@ public class Car {
                 ", name='" + name + '\'' +
                 ", wheels=" + wheels +
                 '}';
-    }@Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true; // Eğer aynı referans ise eşittir
-        }
-        if (obj == null || getClass() != obj.getClass()) {
-            return false; // Null ya da farklı sınıftan bir nesne eşit değildir
-        }
-        Car car = (Car) obj; // Nesneyi Car türüne dönüştür
-        return cylinders == car.cylinders &&
-                (name != null ? name.equals(car.name) : car.name == null); // name ve cylinders eşit mi kontrol et
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return engine == car.engine && cylinders == car.cylinders && wheels == car.wheels && Objects.equals(name, car.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(engine, cylinders, name, wheels);
+    }
+
     public String startEngine() {
         String message = getClass().getSimpleName() + "'s engine is starting.";
         System.out.println(message);
