@@ -38,11 +38,11 @@ public class Car {
     }
 
     public String startEngine() {
-        return getClass().getSimpleName() + "Car's engine is starting.";
+        return getClass().getSimpleName() +  "the car's engine is starting";
     }
 
     public String accelerate() {
-        return getClass().getSimpleName() + " the car is accelerating";
+        return getClass().getSimpleName() + "the car is accelerating";
     }
 
     public String brake() {
