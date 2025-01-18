@@ -1,22 +1,26 @@
 package org.example.company;
 
-public class Ford extends Car{
-    public Ford(String name, int cylinders) {
-        super(name, cylinders);
-    }
+import org.example.company.Car;
 
-    @Override
-    public String brake() {
-        return super.brake();
-    }
-
-    @Override
-    public String accelerate() {
-        return super.accelerate();
+// Subclass: Ford
+public class Ford extends Car {
+    public Ford(int cylinders, String name) {
+        super(cylinders, name);
     }
 
     @Override
     public String startEngine() {
-        return super.startEngine();
+        return getClass().getSimpleName() + "'s engine is starting specifically.";
+    }
+
+    @Override
+    public String accelerate() {
+        return getClass().getSimpleName() + " is accelerating specifically.";
+    }
+
+    @Override
+    public String brake() {
+        return getClass().getSimpleName() + " is braking specifically.";
     }
 }
+
